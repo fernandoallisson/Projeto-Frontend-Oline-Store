@@ -5,10 +5,13 @@ export function SearchPage() {
   const [product, setProducts] = useState([]);
 
   return (
-    <div>
-      { product.length === 0
-        ? <NotFoundProducts />
-        : <p>teste</p>}
-    </div>
+    <>
+      <input type="text" />
+      <div>
+        { product.length === 0
+          ? <NotFoundProducts />
+          : <p>teste</p>}
+      </div>
+    </>
   );
 }

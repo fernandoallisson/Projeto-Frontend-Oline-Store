@@ -3,10 +3,12 @@ import { SearchPage } from './pages/SearchPage';
 
 import './App.css';
 
-export function App() {
+function App() {
   return (
     <Routes>
       <Route path="/" Component={ SearchPage } />
     </Routes>
   );
 }
+
+export default App;
