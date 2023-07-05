@@ -1,7 +1,9 @@
+import { CategoryType } from '../types';
+
 export const getCategories = async () => {
   const responseApi = await fetch('https://api.mercadolibre.com/sites/MLB/categories');
 
-  const dataJson = await responseApi.json();
+  const dataJson: CategoryType[] = await responseApi.json();
   return dataJson;
 };
 
