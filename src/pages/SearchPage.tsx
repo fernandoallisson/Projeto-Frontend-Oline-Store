@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { NotFoundProducts } from '../components/NotFoundProducts';
 import { getProductsFromCategoryAndQuery } from '../services/api';
@@ -25,6 +25,7 @@ export function SearchPage() {
     const dataResponse = await getProductsFromCategoryAndQuery(search);
     setProducts(dataResponse.results);
   };
+  console.log(products);
   return (
     <>
       <input
