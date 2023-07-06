@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { NotFoundProducts } from '../components/NotFoundProducts';
+import { Categories } from '../components/Categories';
 
 export function SearchPage() {
   const [products, setProducts] = useState([]);
@@ -10,8 +11,9 @@ export function SearchPage() {
       <div>
         { products.length === 0
           ? <NotFoundProducts />
-          : <p>teste</p>}
+          : <p>Sem Produtos</p>}
       </div>
+      <Categories />
     </>
   );
 }

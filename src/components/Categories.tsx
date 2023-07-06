@@ -15,7 +15,15 @@ export function Categories() {
   }, []);
 
   return (
-    <>
-    </>
+    <div>
+      {categories.map((category) => (
+        <button
+          key={ category.id }
+          data-testid="category"
+        >
+          {category.name}
+        </button>
+      ))}
+    </div>
   );
 }
