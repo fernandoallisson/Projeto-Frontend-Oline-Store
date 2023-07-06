@@ -7,7 +7,7 @@ export function Categories() {
   const [categories, setCategories] = useState<CategoryType[]>([]);
 
   const [products, setProducts] = useState<ProductType[]>([]);
-  const [selectedCategoryId, setselectedCategoryId] = useState('');
+  const [selectedCategoryId, setSelectedCategoryId] = useState('');
 
   const searchCategories = async () => {
     const dataCategories = await getCategories();
@@ -30,7 +30,7 @@ export function Categories() {
   }, [selectedCategoryId]);
 
   const handleClickButtonCategory = (id: string) => {
-    setselectedCategoryId(id);
+    setSelectedCategoryId(id);
   };
 
   return (
