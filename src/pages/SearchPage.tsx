@@ -23,7 +23,6 @@ export function SearchPage() {
         onClick={ redirect }
       >
         Carrinho de Compras
-
       </button>
     </>
   );
