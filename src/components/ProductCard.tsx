@@ -7,7 +7,7 @@ type ProductProps = {
 export function ProductCard({ product }: ProductProps) {
   return (
     <div data-testid="product">
-      <h4>{product.title}</h4>
+      <h5>{product.title}</h5>
       <img src={ product.thumbnail } alt={ product.title } />
     </div>
   );
