@@ -4,7 +4,7 @@ import { NotFoundProducts } from '../components/NotFoundProducts';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 
 export function SearchPage() {
-  const [product, setProducts] = useState([]); //
+  const [product, setProducts] = useState([]);
   const [productSearch, setProductSearch] = useState('');
   const navigate = useNavigate();
 
