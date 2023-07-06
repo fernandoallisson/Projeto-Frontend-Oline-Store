@@ -3,11 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { NotFoundProducts } from '../components/NotFoundProducts';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 import { ProductList } from '../components/ProductList';
+import { Categories } from '../components/Categories';
 import { ProductType } from '../types';
 
 export function SearchPage() {
   const [products, setProducts] = useState<ProductType[]>([]);
   const [productSearch, setProductSearch] = useState('');
+
   const navigate = useNavigate();
 
   const redirect = () => {
@@ -41,7 +43,7 @@ export function SearchPage() {
       <div>
         { products.length === 0
           ? <NotFoundProducts />
-          : <ProductList products={ products } />}
+          : <ProductList products={ products } />
       </div>
       <button
         data-testid="shopping-cart-button"
@@ -49,7 +51,7 @@ export function SearchPage() {
       >
         Carrinho de Compras
       </button>
-
+      <Categories />
     </>
   );
 }
