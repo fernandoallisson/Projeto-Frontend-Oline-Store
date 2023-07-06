@@ -2,9 +2,11 @@ import { ChangeEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { NotFoundProducts } from '../components/NotFoundProducts';
 import { getProductsFromCategoryAndQuery } from '../services/api';
+import { ProductList } from '../components/ProductList';
+import { ProductType } from '../types';
 
 export function SearchPage() {
-  const [product, setProducts] = useState([]);
+  const [products, setProducts] = useState<ProductType[]>([]);
   const [productSearch, setProductSearch] = useState('');
   const navigate = useNavigate();
 
@@ -18,8 +20,8 @@ export function SearchPage() {
   };
 
   const handleClick = async (search: string) => {
-    const result:[] = await getProductsFromCategoryAndQuery(search);
-    console.log(result);
+    const dataResponse = await getProductsFromCategoryAndQuery(search);
+    setProducts(dataResponse.results);
   };
   return (
     <>
@@ -37,9 +39,9 @@ export function SearchPage() {
         Procurar
       </button>
       <div>
-        { product.length === 0
+        { products.length === 0
           ? <NotFoundProducts />
-          : <p>teste</p>}
+          : <ProductList products={ products } />}
       </div>
       <button
         data-testid="shopping-cart-button"

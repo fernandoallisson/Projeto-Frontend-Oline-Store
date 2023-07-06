@@ -1,4 +1,4 @@
-import { CategoryType } from '../types';
+import { CategoryType, ProductType } from '../types';
 
 export const getCategories = async () => {
   const responseApi = await fetch('https://api.mercadolibre.com/sites/MLB/categories');
@@ -13,11 +13,11 @@ export const getProductsFromCategoryAndQuery = async (
 ) => {
   let response;
 
-  if (categoryId) response = await fetch(`https://api.mercadolibre.com/sites/MLB/search?q=${query}`);
-  else response = await fetch(`https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}`);
+  if (categoryId) response = await fetch(`https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}`);
+  else response = await fetch(`https://api.mercadolibre.com/sites/MLB/search?q=${query}`);
 
   const responseJson = await response.json();
-  return responseJson;
+  return responseJson as { results: ProductType[] };
 };
 
 export const getProductById = async (productId: string) => {
