@@ -42,7 +42,7 @@ export function SearchPage() {
           : <p>teste</p>}
       </div>
       <button
-        data-testId="shopping-cart-button"
+        data-testid="shopping-cart-button"
         onClick={ redirect }
       >
         Carrinho de Compras
