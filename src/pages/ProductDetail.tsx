@@ -2,7 +2,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getProductById } from '../services/api';
 import { ProductType } from '../types';
-import { ButtonCart } from '../components/ButtonCart';
 import { addStorage } from '../services/productStorage';
 
 const DEFAULT_PRODUCT = {

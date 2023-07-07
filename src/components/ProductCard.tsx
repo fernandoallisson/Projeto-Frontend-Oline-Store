@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { ProductType } from '../types';
-import { addStorage, getStorage } from '../services/productStorage';
+import { addStorage } from '../services/productStorage';
 import { ButtonCart } from './ButtonCart';
 
 type ProductProps = {
