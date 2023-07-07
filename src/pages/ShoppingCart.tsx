@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ProductType } from '../types';
 import { getStorage } from '../services/ProductStorage';
-import { ProductList } from './ProductList';
+import { ProductList } from '../components/ProductList';
 
 export function ShoppingCart() {
   const [products, setProducts] = useState<ProductType[]>();

@@ -10,8 +10,8 @@ export const addStorage = <T>(key: string, value: T) => {
     localStorage.setItem(key, JSON.stringify([value]));
     return;
   }
-  const dataJson = JSON.parse(prevStorage);
-  localStorage.setItem(key, JSON.stringify([...dataJson, value]));
+  console.log(prevStorage);
+  localStorage.setItem(key, JSON.stringify([...prevStorage, value]));
 };
 
 export const removeStorage = (key: string) => {
