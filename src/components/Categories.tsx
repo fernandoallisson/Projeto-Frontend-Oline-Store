@@ -46,6 +46,7 @@ export function Categories() {
           </button>
         ))}
       </div>
+
       <div>
         <ProductList products={ products } showButton />
       </div>
