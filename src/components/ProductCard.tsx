@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { ProductType } from '../types';
-import { addStorage, getStorage } from '../services/ProductStorage';
+import { addStorage, getStorage } from '../services/productStorage';
 import { ButtonCart } from './ButtonCart';
 
 type ProductProps = {
@@ -17,7 +17,6 @@ export function ProductCard({ product,
     const { id, title, thumbnail, price, quantity } = value;
     const filterProduct = { id, title, thumbnail, price, quantity };
     addStorage<ProductType>('products', filterProduct);
-    console.log(getStorage('products'));
   };
 
   const redirect = () => {
