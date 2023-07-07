@@ -23,7 +23,6 @@ export function ProductList({ products, showButton }: ProductListProps) {
         return findProduct.id === product.id;
       });
       if (foundProduct >= 0) {
-        console.log(quantity);
         quantity[foundProduct].quantity += 1;
       } else {
         quantity.push({
@@ -35,7 +34,14 @@ export function ProductList({ products, showButton }: ProductListProps) {
     setQuantityProduct(quantity);
   }, [products]);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const reduceProducts = products.reduce((acc, product) => {
+      const foundProduct = acc.find((accProduct) => accProduct.id === product.id);
+      if (foundProduct) return acc;
+      return [...acc, product];
+    }, [] as ProductType[]);
+    setProductList(reduceProducts);
+  }, [products]);
 
   return (
     <div>
@@ -44,12 +50,12 @@ export function ProductList({ products, showButton }: ProductListProps) {
           const index = quantityProduct.findIndex((findProduct) => {
             return findProduct.id === product.id;
           });
-          const test = quantityProduct[index] ?? { quantity: 0 };
+
           return (<ProductCard
             key={ product.id }
             product={ product }
             showButton={ showButton }
-            quantity={ test.quantity ?? 0 }
+            quantity={ quantityProduct[index].quantity }
           />);
         })
       }

@@ -25,7 +25,7 @@ export function SearchPage() {
     const dataResponse = await getProductsFromCategoryAndQuery(search);
     setProducts(dataResponse.results);
   };
-  console.log(products);
+
   return (
     <>
       <input
