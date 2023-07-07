@@ -33,7 +33,7 @@ export function ShoppingCart() {
         data-testid="checkout-products"
         onClick={ redirectCheckout }
       >
-        Finalizar compra
+        Finalizar a compra
       </button>
 
     </>
