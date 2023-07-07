@@ -5,7 +5,6 @@ import { ProductList } from './ProductList';
 
 export function Categories() {
   const [categories, setCategories] = useState<CategoryType[]>([]);
-
   const [products, setProducts] = useState<ProductType[]>([]);
   const [selectedCategoryId, setselectedCategoryId] = useState('');
 
@@ -48,8 +47,8 @@ export function Categories() {
         ))}
       </div>
       <div>
-        <ProductList products={ products } />
+        <ProductList products={ products } showButton />
       </div>
     </>
   );
-} 
+}

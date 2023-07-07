@@ -43,7 +43,7 @@ export function SearchPage() {
       <div>
         { products.length === 0
           ? <NotFoundProducts />
-          : <ProductList products={ products } />}
+          : <ProductList products={ products } showButton />}
       </div>
       <button
         data-testid="shopping-cart-button"
