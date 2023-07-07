@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ProductType } from '../types';
-import { getStorage } from '../services/ProductStorage';
+import { getStorage } from '../services/productStorage';
 import { ProductList } from '../components/ProductList';
 
 export function ShoppingCart() {

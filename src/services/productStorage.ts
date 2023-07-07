@@ -10,7 +10,7 @@ export const addStorage = <T>(key: string, value: T) => {
     localStorage.setItem(key, JSON.stringify([value]));
     return;
   }
-  console.log(prevStorage);
+
   localStorage.setItem(key, JSON.stringify([...prevStorage, value]));
 };
 
