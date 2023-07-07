@@ -3,6 +3,7 @@ import { ProductType } from '../types';
 import { getStorage } from '../services/productStorage';
 import { ProductList } from '../components/ProductList';
 
+// Creating the 10th task
 export function ShoppingCart() {
   const [products, setProducts] = useState<ProductType[]>();
 
