@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ProductType } from '../types';
 import { ProductCard } from './ProductCard';
+import { removeProduct, removeStorage } from '../services/productStorage';
 
 type ProductListProps = {
   products: ProductType[];
@@ -19,11 +20,9 @@ export function ProductList({ products, showButton }: ProductListProps) {
   useEffect(() => {
     const quantity: ProductQuantity[] = [];
     products.forEach((product) => {
-      const foundProduct = quantity.findIndex((findProduct) => {
-        return findProduct.id === product.id;
-      });
-      if (foundProduct >= 0) {
-        quantity[foundProduct].quantity += 1;
+      const foundProduct = quantity.find((item) => item.id === product.id);
+      if (foundProduct) {
+        foundProduct.quantity += 1;
       } else {
         quantity.push({
           id: product.id,
@@ -43,6 +42,12 @@ export function ProductList({ products, showButton }: ProductListProps) {
     setProductList(reduceProducts);
   }, [products]);
 
+  const handleRemoveProduct = (productId: string) => {
+    removeProduct('products', productId);
+    setProductList((prevProductsList) => prevProductsList
+      .filter((element) => element.id !== productId));
+  };
+
   return (
     <div>
       {
@@ -52,6 +57,7 @@ export function ProductList({ products, showButton }: ProductListProps) {
           });
 
           return (<ProductCard
+            handleRemoveProduct={ () => handleRemoveProduct(product.id) }
             key={ product.id }
             product={ product }
             showButton={ showButton }
