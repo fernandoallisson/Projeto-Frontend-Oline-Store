@@ -1,3 +1,5 @@
+import { ProductType } from '../types';
+
 export const getStorage = (key: string) => {
   const storageData = localStorage.getItem(key);
   if (!storageData) return;
@@ -12,6 +14,25 @@ export const addStorage = <T>(key: string, value: T) => {
   }
 
   localStorage.setItem(key, JSON.stringify([...prevStorage, value]));
+};
+export const removeProduct = (key: string, id: string, all = false) => {
+  const storageProducts: ProductType[] = getStorage(key);
+
+  if (all) {
+    const filteredProducts = storageProducts.filter((currProduct) => {
+      return currProduct.id !== id;
+    });
+
+    localStorage.setItem(key, JSON.stringify(filteredProducts));
+    return;
+  }
+
+  const foundIndex = storageProducts.findIndex((currProduct) => {
+    return currProduct.id === id;
+  });
+
+  storageProducts.splice(foundIndex, 1);
+  localStorage.setItem(key, JSON.stringify(storageProducts));
 };
 
 export const removeStorage = (key: string) => {
