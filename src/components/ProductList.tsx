@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ProductType } from '../types';
 import { ProductCard } from './ProductCard';
-import { removeProduct, removeStorage } from '../services/productStorage';
+import { removeProduct } from '../services/productStorage';
 
 type ProductListProps = {
   products: ProductType[];
@@ -43,7 +43,7 @@ export function ProductList({ products, showButton }: ProductListProps) {
   }, [products]);
 
   const handleRemoveProduct = (productId: string) => {
-    removeProduct('products', productId);
+    removeProduct('products', productId, true);
     setProductList((prevProductsList) => prevProductsList
       .filter((element) => element.id !== productId));
   };
@@ -57,7 +57,7 @@ export function ProductList({ products, showButton }: ProductListProps) {
           });
 
           return (<ProductCard
-            handleRemoveProduct={ () => handleRemoveProduct(product.id) }
+            handleRemoveProduct={ handleRemoveProduct }
             key={ product.id }
             product={ product }
             showButton={ showButton }

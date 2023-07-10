@@ -8,13 +8,13 @@ type ProductProps = {
   product: ProductType;
   showButton: boolean;
   quantity?: number;
-  handleRemoveProduct: () => void
+  handleRemoveProduct: (productId: string) => void
 };
 
 export function ProductCard({ product,
   showButton, quantity: propQuantity = 0, handleRemoveProduct }: ProductProps) {
   const navigate = useNavigate();
-  const [quantitys, setQuantitys] = useState<number>(propQuantity);
+  const [quantities, setQuantities] = useState<number>(propQuantity);
 
   const handleClick = (value: ProductType) => {
     const { id, title, thumbnail, price } = value;
@@ -23,7 +23,7 @@ export function ProductCard({ product,
       title,
       thumbnail,
       price,
-      quantity: quantitys,
+      quantity: quantities,
     };
     addStorage<ProductType>('products', updatedProduct);
   };
@@ -33,15 +33,15 @@ export function ProductCard({ product,
   };
 
   const increaseQuantity = () => {
-    const updatedQuantity = quantitys + 1;
-    setQuantitys(updatedQuantity);
+    const updatedQuantity = quantities + 1;
+    setQuantities(updatedQuantity);
     handleClick({ ...product, quantity: updatedQuantity });
   };
 
   const decreaseQuantity = () => {
-    if (quantitys > 1) {
-      removeProduct(product.id, 'products');
-      setQuantitys((prevState) => prevState - 1);
+    if (quantities > 1) {
+      removeProduct('products', product.id);
+      setQuantities((prevState) => prevState - 1);
     }
   };
 
@@ -51,13 +51,13 @@ export function ProductCard({ product,
     <div data-testid="product">
       <button
         data-testid="remove-product"
-        onClick={ handleRemoveProduct }
+        onClick={ () => handleRemoveProduct(product.id) }
       >
         Remover
       </button>
       <h5 data-testid="shopping-cart-product-name">{product.title}</h5>
       <img src={ product.thumbnail } alt={ product.title } />
-      {propQuantity > 0 && <p data-testid={ testId }>{ quantitys }</p>}
+      {propQuantity > 0 && <p data-testid={ testId }>{ quantities }</p>}
       <p>{product.price}</p>
       {showButton && <ButtonCart handleClick={ handleClick } product={ product } />}
       <button data-testid="product-detail-link" onClick={ redirect }>
